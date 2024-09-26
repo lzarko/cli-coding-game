@@ -16,6 +16,13 @@ public class MinMax implements Action {
         float max = Collections.max(numbers);
         float min = Collections.min(numbers);
 
-        return format == Format.CSV ? min + ", " + max : "{\"min\":" + min + ",\"max\":" + max + "}";
+        return outputFormat(max, min, format);
+    }
+
+    private String outputFormat(Float max, Float min, Format format) {
+        return switch (format) {
+            case CSV -> min + ", " + max;
+            case JSON -> "{\"min\":" + min + ",\"max\":" + max + "}";
+        };
     }
 }

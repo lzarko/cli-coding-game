@@ -94,7 +94,11 @@ public class Main {
     }
 
     private static Format parseFormat(String format) {
-        return format.equalsIgnoreCase("json") ? Format.JSON : Format.CSV;
+        return switch (format.toLowerCase()) {
+            case "json" -> Format.JSON;
+            case "csv" -> Format.CSV;
+            default -> throw new IllegalArgumentException("Unsupported format: " + format);
+        };
     }
 
     private static Action parseAction(String action) {
@@ -102,10 +106,7 @@ public class Main {
             case "sum" -> new Sum();
             case "minmax" -> new MinMax();
             case "lt4" -> new LessThanFour();
-            default -> {
-                logger.severe("Unknown action: " + action);
-                yield null;
-            }
+            default -> throw new IllegalArgumentException("Unknown action: " + action);
         };
     }
     }
