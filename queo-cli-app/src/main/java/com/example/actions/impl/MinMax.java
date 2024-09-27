@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MinMax implements Action {
     @Override
-    public String execute(List<Float> numbers, Format format) {
+    public String execute(List<Float> numbers, Format outputFormat) {
         if(numbers.isEmpty()) {
             return "";
         }
@@ -16,7 +16,7 @@ public class MinMax implements Action {
         float max = Collections.max(numbers);
         float min = Collections.min(numbers);
 
-        return outputFormat(max, min, format);
+        return outputFormat(max, min, outputFormat);
     }
 
     private String outputFormat(Float max, Float min, Format format) {
