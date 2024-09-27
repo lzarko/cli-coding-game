@@ -7,13 +7,13 @@ import java.util.List;
 
 public class Sum implements Action {
     @Override
-    public String execute(List<Float> numbers, Format format) {
+    public String execute(List<Float> numbers, Format outputFormat) {
         float sum = 0;
         for(float num : numbers) {
             sum += num;
         }
 
-        return outputFormat(sum, format);
+        return outputFormat(sum, outputFormat);
     }
 
     private String outputFormat(Float sum, Format format) {

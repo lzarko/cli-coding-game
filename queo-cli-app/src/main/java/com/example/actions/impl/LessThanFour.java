@@ -9,12 +9,12 @@ import java.util.stream.Collectors;
 public class LessThanFour implements Action {
 
     @Override
-    public String execute(List<Float> numbers, Format format) {
+    public String execute(List<Float> numbers, Format outputFormat) {
         List<Float> lessThanFour = numbers.stream()
                 .filter(num -> num < 4)
                 .toList();
 
-        return outputFormat(lessThanFour, format);
+        return outputFormat(lessThanFour, outputFormat);
     }
 
     private String outputFormat(List<Float> numbers, Format format) {
