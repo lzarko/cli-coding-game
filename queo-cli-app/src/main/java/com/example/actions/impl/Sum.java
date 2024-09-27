@@ -13,6 +13,13 @@ public class Sum implements Action {
             sum += num;
         }
 
-        return format == Format.CSV ? String.valueOf(sum) : "{\"sum\":" + sum + "}";
+        return outputFormat(sum, format);
+    }
+
+    private String outputFormat(Float sum, Format format) {
+        return switch (format) {
+            case CSV -> sum + "\n";
+            case JSON -> "{\"sum\":" + sum + "}";
+        };
     }
 }
